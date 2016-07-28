@@ -89,8 +89,14 @@ class PDF
         } else {
             $this->folder = $tmpFolder;
         }
+    }
 
-
+    /**
+     * Cleanup. Removing own temp files, in case PDF generation has failed
+     * or did not happen.
+     */
+    function __destruct() {
+        $this->removeTmpFiles();
     }
 
     /**
